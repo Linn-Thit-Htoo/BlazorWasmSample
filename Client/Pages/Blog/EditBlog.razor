@@ -1,0 +1,38 @@
+﻿@page "/blog/edit/{id:long}"
+@inject HttpClient HttpClient
+
+<h3>Edit Blog</h3>
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Edit Blog</h3>
+                </div>
+                <div class="card-body">
+                    @if (blog is not null)
+                    {
+                        <div class="mb-3">
+                            <label>Blog Title: </label>
+                            <input class="form-control" name="BlogTitle" @bind-value="blog.BlogTitle" required />
+                        </div>
+                        <div class="mb-3">
+                            <label>Blog Author: </label>
+                            <input class="form-control" name="BlogAuthor" @bind-value="blog.BlogAuthor" required />
+                        </div>
+                        <div class="mb-3">
+                            <label>Blog Content: </label>
+                            <input class="form-control" name="BlogContent" @bind-value="blog.BlogContent" required />
+                        </div>
+                        <button class="btn btn-outline-info" @onclick="Update">Edit</button>
+                    }
+                    else
+                    {
+                        <h3>No data found.</h3>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

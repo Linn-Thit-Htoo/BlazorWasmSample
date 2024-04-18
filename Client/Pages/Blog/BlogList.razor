@@ -1,0 +1,41 @@
+﻿@page "/";
+@inject HttpClient HttpClient;
+
+<h3>BlogList</h3>
+
+@if (lst is not null)
+{
+    <a class="btn btn-outline-dark my-3" href="/blog/create">Create Blog</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Blog ID</th>
+                <th>Blog Title</th>
+                <th>Blog Author</th>
+                <th>Blog Content</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in lst)
+            {
+                <tr>
+                    <th>@item.BlogId</th>
+                    <th>@item.BlogTitle</th>
+                    <th>@item.BlogAuthor</th>
+                    <th>@item.BlogContent</th>
+                    <th>
+                        <MudButton Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Edit" Color="Color.Primary"><NavLink @onclick="() => Edit(item.BlogId)">Edit</NavLink></MudButton>
+                        <MudButton Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Delete" Color="Color.Error" @onclick="() => Delete(item.BlogId)">Delete</MudButton>
+                    </th>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+}

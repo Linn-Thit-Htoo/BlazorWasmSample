@@ -1,0 +1,33 @@
+﻿@page "/blog/create"
+@inject HttpClient HttpClient;
+@inject IJSRuntime JsRuntime
+
+
+<h3>CreateBlog</h3>
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Create Blog</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label>Blog Title: </label>
+                        <input class="form-control" name="BlogTitle" @bind-value="requestModel.BlogTitle" required />
+                    </div>
+                    <div class="mb-3">
+                        <label>Blog Author: </label>
+                        <input class="form-control" name="BlogAuthor" @bind-value="requestModel.BlogAuthor" required />
+                    </div>
+                    <div class="mb-3">
+                        <label>Blog Content: </label>
+                        <input class="form-control" name="BlogContent" @bind-value="requestModel.BlogContent" required />
+                    </div>
+                    <button class="btn btn-outline-info" @onclick="Save">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
